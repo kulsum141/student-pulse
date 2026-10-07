@@ -1,0 +1,13 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+
+.lavender { border-color: var(--lavender); background: var(--lavender-light); }
+.pink     { border-color: var(--pink);     background: var(--pink-light); }
+.sky      { border-color: var(--sky);      background: var(--sky-light); }
+.mint     { border-color: var(--mint);     background: var(--mint-light); }
+.peach    { border-color: var(--peach);    background: var(--peach-light); }
+.cream    { background: var(--cream); border-color: #e8dfc8; }

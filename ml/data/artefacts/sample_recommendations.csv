@@ -1,0 +1,376 @@
+student_id,student_name,item_id,title,item_type,score,cosine_score,skill_overlap,cgpa_factor,matched_skills
+S001,Aarav Sharma,O001,Machine Learning Intern,opportunity,0.7889,0.8018,1.0,0.9734,"machine learning, python, sql"
+S001,Aarav Sharma,O017,Data Scientist,opportunity,0.6958,0.8018,0.75,0.8909,"machine learning, python, sql"
+S001,Aarav Sharma,O005,NLP Research Intern,opportunity,0.5325,0.5547,0.6667,0.8909,"machine learning, python"
+S001,Aarav Sharma,O007,Data Engineering Intern,opportunity,0.5259,0.5345,0.6667,0.9734,"python, sql"
+S001,Aarav Sharma,O010,Quant Research Intern,opportunity,0.5259,0.5345,0.6667,0.9734,"python, sql"
+S001,Aarav Sharma,P005,Random Forests,paper,0.275,0.5,0.0,1.0,
+S001,Aarav Sharma,P006,A Survey on Transfer Learning,paper,0.275,0.5,0.0,1.0,
+S001,Aarav Sharma,P010,XGBoost: A Scalable Tree Boosting System,paper,0.275,0.5,0.0,1.0,
+S001,Aarav Sharma,P015,A Tutorial on Support Vector Machines,paper,0.275,0.5,0.0,1.0,
+S001,Aarav Sharma,P020,An Introduction to Statistical Learning,paper,0.275,0.5,0.0,1.0,
+S001,Aarav Sharma,H005,AngelHack Global,hackathon,0.791,0.8018,1.0,1.0,"machine learning, python, sql"
+S001,Aarav Sharma,H006,NASA Space Apps Challenge,hackathon,0.6917,0.8333,0.6667,1.0,"data analysis, python"
+S001,Aarav Sharma,H020,Hack the Climate,hackathon,0.6917,0.8333,0.6667,1.0,"data analysis, python"
+S001,Aarav Sharma,H018,J.P. Morgan Code for Good,hackathon,0.6008,0.6682,0.6667,1.0,"python, sql"
+S001,Aarav Sharma,H001,Smart India Hackathon 2024,hackathon,0.6,0.6667,0.6667,1.0,"machine learning, python"
+S002,Priya Nair,O006,Embedded Systems Intern,opportunity,0.67,0.8165,0.6667,0.8176,"c++, matlab"
+S002,Priya Nair,O020,VLSI Design Engineer,opportunity,0.285,0.3333,0.3333,0.5,matlab
+S002,Priya Nair,O010,Quant Research Intern,opportunity,0.0806,0.1543,0.0,0.5,
+S002,Priya Nair,O022,Quant Analyst,opportunity,0.0806,0.1543,0.0,0.5,
+S002,Priya Nair,O021,Reinforcement Learning Researcher,opportunity,0.0797,0.1601,0.0,0.0474,
+S002,Priya Nair,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S002,Priya Nair,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S002,Priya Nair,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S002,Priya Nair,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S002,Priya Nair,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S002,Priya Nair,H016,Inter IIT Tech Meet,hackathon,0.3,0.3333,0.3333,1.0,c++
+S002,Priya Nair,H014,HackMIT,hackathon,0.2864,0.3086,0.3333,1.0,c++
+S002,Priya Nair,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S002,Priya Nair,H002,MLH Global Hack,hackathon,0.0,0.0,0.0,1.0,
+S002,Priya Nair,H003,HackBio,hackathon,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,O016,Full Stack Developer,opportunity,0.8862,0.9762,1.0,0.9918,"node.js, python, react, sql"
+S003,Rohan Gupta,O001,Machine Learning Intern,opportunity,0.4959,0.4781,0.6667,0.9918,"python, sql"
+S003,Rohan Gupta,O007,Data Engineering Intern,opportunity,0.4959,0.4781,0.6667,0.9918,"python, sql"
+S003,Rohan Gupta,O010,Quant Research Intern,opportunity,0.4959,0.4781,0.6667,0.9918,"python, sql"
+S003,Rohan Gupta,O022,Quant Analyst,opportunity,0.4376,0.4781,0.5,0.9918,"python, sql"
+S003,Rohan Gupta,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S003,Rohan Gupta,H017,Hack4Good,hackathon,0.7593,0.7442,1.0,1.0,"python, react, sql"
+S003,Rohan Gupta,H008,Morgan Stanley Code to Give,hackathon,0.6278,0.7171,0.6667,1.0,"python, react"
+S003,Rohan Gupta,H018,J.P. Morgan Code for Good,hackathon,0.562,0.5976,0.6667,1.0,"python, sql"
+S003,Rohan Gupta,H005,AngelHack Global,hackathon,0.4963,0.4781,0.6667,1.0,"python, sql"
+S003,Rohan Gupta,H011,Smart City Hackathon,hackathon,0.4467,0.6,0.3333,1.0,python
+S004,Sneha Reddy,O017,Data Scientist,opportunity,0.5233,0.6682,0.5,0.6457,"machine learning, python"
+S004,Sneha Reddy,O001,Machine Learning Intern,opportunity,0.5216,0.5345,0.6667,0.8909,"machine learning, python"
+S004,Sneha Reddy,O005,NLP Research Intern,opportunity,0.5193,0.5547,0.6667,0.6457,"machine learning, python"
+S004,Sneha Reddy,O013,Bioinformatics Intern,opportunity,0.5193,0.5547,0.6667,0.6457,"python, r"
+S004,Sneha Reddy,O009,Computer Vision Intern,opportunity,0.5086,0.5345,0.6667,0.6457,"machine learning, python"
+S004,Sneha Reddy,P005,Random Forests,paper,0.275,0.5,0.0,1.0,
+S004,Sneha Reddy,P006,A Survey on Transfer Learning,paper,0.275,0.5,0.0,1.0,
+S004,Sneha Reddy,P010,XGBoost: A Scalable Tree Boosting System,paper,0.275,0.5,0.0,1.0,
+S004,Sneha Reddy,P015,A Tutorial on Support Vector Machines,paper,0.275,0.5,0.0,1.0,
+S004,Sneha Reddy,P020,An Introduction to Statistical Learning,paper,0.275,0.5,0.0,1.0,
+S004,Sneha Reddy,H001,Smart India Hackathon 2024,hackathon,0.6,0.6667,0.6667,1.0,"machine learning, python"
+S004,Sneha Reddy,H009,Adobe GenSolve,hackathon,0.5509,0.5774,0.6667,1.0,"machine learning, python"
+S004,Sneha Reddy,H010,HackerEarth ML Challenge,hackathon,0.5509,0.5774,0.6667,1.0,"machine learning, python"
+S004,Sneha Reddy,H016,Inter IIT Tech Meet,hackathon,0.5509,0.5774,0.6667,1.0,"machine learning, python"
+S004,Sneha Reddy,H003,HackBio,hackathon,0.5384,0.5547,0.6667,1.0,"python, r"
+S005,Arjun Mehta,O006,Embedded Systems Intern,opportunity,0.3192,0.4082,0.3333,0.3543,matlab
+S005,Arjun Mehta,O020,VLSI Design Engineer,opportunity,0.2733,0.3333,0.3333,0.1091,matlab
+S005,Arjun Mehta,O010,Quant Research Intern,opportunity,0.0773,0.1543,0.0,0.1091,
+S005,Arjun Mehta,O022,Quant Analyst,opportunity,0.0773,0.1543,0.0,0.1091,
+S005,Arjun Mehta,O001,Machine Learning Intern,opportunity,0.0,0.0,0.0,0.1091,
+S005,Arjun Mehta,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,H002,MLH Global Hack,hackathon,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,H003,HackBio,hackathon,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,H004,ETHIndia,hackathon,0.0,0.0,0.0,1.0,
+S005,Arjun Mehta,H005,AngelHack Global,hackathon,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,O003,Backend Developer Intern,opportunity,0.3542,0.4472,0.3333,0.7685,java
+S006,Kavya Pillai,O008,Android Developer Intern,opportunity,0.3407,0.4082,0.3333,0.9852,java
+S006,Kavya Pillai,O012,Blockchain Developer Intern,opportunity,0.3247,0.3922,0.3333,0.7685,python
+S006,Kavya Pillai,O001,Machine Learning Intern,opportunity,0.317,0.378,0.3333,0.7685,python
+S006,Kavya Pillai,O007,Data Engineering Intern,opportunity,0.317,0.378,0.3333,0.7685,python
+S006,Kavya Pillai,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S006,Kavya Pillai,H013,Flipkart Grid,hackathon,0.6648,0.7845,0.6667,1.0,"java, python"
+S006,Kavya Pillai,H007,Hack the Box CTF,hackathon,0.5056,0.7071,0.3333,1.0,python
+S006,Kavya Pillai,H011,Smart City Hackathon,hackathon,0.4645,0.6325,0.3333,1.0,python
+S006,Kavya Pillai,H001,Smart India Hackathon 2024,hackathon,0.3759,0.4714,0.3333,1.0,python
+S006,Kavya Pillai,H006,NASA Space Apps Challenge,hackathon,0.3759,0.4714,0.3333,1.0,python
+S007,Vikram Singh,O018,Backend Engineer,opportunity,0.7117,0.825,0.75,0.937,"java, microservices, spring boot"
+S007,Vikram Singh,O003,Backend Developer Intern,opportunity,0.6639,0.7906,0.6667,0.937,"java, spring boot"
+S007,Vikram Singh,O008,Android Developer Intern,opportunity,0.2753,0.2887,0.3333,0.9967,java
+S007,Vikram Singh,O015,DevOps Intern,opportunity,0.1228,0.2236,0.0,0.9852,
+S007,Vikram Singh,O024,Android Developer,opportunity,0.1121,0.2041,0.0,0.9852,
+S007,Vikram Singh,P024,Kubernetes: Up and Running,paper,0.3625,0.5,0.25,1.0,kubernetes
+S007,Vikram Singh,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,H013,Flipkart Grid,hackathon,0.2692,0.2774,0.3333,1.0,java
+S007,Vikram Singh,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,H002,MLH Global Hack,hackathon,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,H003,HackBio,hackathon,0.0,0.0,0.0,1.0,
+S007,Vikram Singh,H004,ETHIndia,hackathon,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,O010,Quant Research Intern,opportunity,0.7766,0.8018,1.0,0.8176,"excel, python, sql"
+S008,Meera Joshi,O002,Data Analyst Intern,opportunity,0.7128,0.825,0.75,0.9526,"excel, python, sql"
+S008,Meera Joshi,O022,Quant Analyst,opportunity,0.6906,0.8018,0.75,0.8176,"excel, python, sql"
+S008,Meera Joshi,O001,Machine Learning Intern,opportunity,0.5177,0.5345,0.6667,0.8176,"python, sql"
+S008,Meera Joshi,O007,Data Engineering Intern,opportunity,0.5177,0.5345,0.6667,0.8176,"python, sql"
+S008,Meera Joshi,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S008,Meera Joshi,H017,Hack4Good,hackathon,0.5384,0.5547,0.6667,1.0,"python, sql"
+S008,Meera Joshi,H005,AngelHack Global,hackathon,0.5273,0.5345,0.6667,1.0,"python, sql"
+S008,Meera Joshi,H018,J.P. Morgan Code for Good,hackathon,0.5273,0.5345,0.6667,1.0,"python, sql"
+S008,Meera Joshi,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S008,Meera Joshi,H019,OpenHack by Microsoft,hackathon,0.3776,0.4743,0.3333,1.0,python
+S009,Karthik Rajan,O005,NLP Research Intern,opportunity,0.497,0.5547,0.6667,0.2315,"nlp, python"
+S009,Karthik Rajan,O019,ML Research Engineer,opportunity,0.3285,0.5,0.25,0.063,python
+S009,Karthik Rajan,O001,Machine Learning Intern,opportunity,0.3228,0.4009,0.3333,0.5744,python
+S009,Karthik Rajan,O009,Computer Vision Intern,opportunity,0.3112,0.4009,0.3333,0.2315,python
+S009,Karthik Rajan,O012,Blockchain Developer Intern,opportunity,0.2578,0.2774,0.3333,0.5744,python
+S009,Karthik Rajan,P001,Attention Is All You Need,paper,0.3625,0.5,0.25,1.0,nlp
+S009,Karthik Rajan,P016,Deep Learning for Natural Language Processing,paper,0.3625,0.5,0.25,1.0,nlp
+S009,Karthik Rajan,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.3022,0.3904,0.25,1.0,nlp
+S009,Karthik Rajan,P017,Efficient Estimation of Word Representations in Vector Space,paper,0.3022,0.3904,0.25,1.0,nlp
+S009,Karthik Rajan,P009,Long Short-Term Memory,paper,0.275,0.5,0.0,1.0,
+S009,Karthik Rajan,H005,AngelHack Global,hackathon,0.4107,0.5345,0.3333,1.0,python
+S009,Karthik Rajan,H001,Smart India Hackathon 2024,hackathon,0.3917,0.5,0.3333,1.0,python
+S009,Karthik Rajan,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S009,Karthik Rajan,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S009,Karthik Rajan,H013,Flipkart Grid,hackathon,0.3455,0.416,0.3333,1.0,python
+S010,Divya Rao,O013,Bioinformatics Intern,opportunity,0.8678,0.9707,1.0,0.8176,"bioinformatics, python, r"
+S010,Divya Rao,O010,Quant Research Intern,opportunity,0.3356,0.4009,0.3333,0.9526,python
+S010,Divya Rao,O022,Quant Analyst,opportunity,0.3065,0.4009,0.25,0.9526,python
+S010,Divya Rao,O002,Data Analyst Intern,opportunity,0.2816,0.3536,0.25,0.989,python
+S010,Divya Rao,O012,Blockchain Developer Intern,opportunity,0.2679,0.2774,0.3333,0.9526,python
+S010,Divya Rao,P011,An Introduction to Bioinformatics Algorithms,paper,0.282,0.3536,0.25,1.0,bioinformatics
+S010,Divya Rao,P018,U-Net: Convolutional Networks for Biomedical Image Segmentation,paper,0.275,0.5,0.0,1.0,
+S010,Divya Rao,P023,SMILES-Based Molecular Generation Using Transformers,paper,0.275,0.5,0.0,1.0,
+S010,Divya Rao,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S010,Divya Rao,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S010,Divya Rao,H003,HackBio,hackathon,0.8839,0.9707,1.0,1.0,"bioinformatics, python, r"
+S010,Divya Rao,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S010,Divya Rao,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S010,Divya Rao,H001,Smart India Hackathon 2024,hackathon,0.3,0.3333,0.3333,1.0,python
+S010,Divya Rao,H006,NASA Space Apps Challenge,hackathon,0.3,0.3333,0.3333,1.0,python
+S011,Nikhil Kumar,O021,Reinforcement Learning Researcher,opportunity,0.3426,0.416,0.3333,0.9168,python
+S011,Nikhil Kumar,O006,Embedded Systems Intern,opportunity,0.3111,0.3536,0.3333,0.999,c++
+S011,Nikhil Kumar,O012,Blockchain Developer Intern,opportunity,0.2691,0.2774,0.3333,0.9955,python
+S011,Nikhil Kumar,O005,NLP Research Intern,opportunity,0.2687,0.2774,0.3333,0.9802,python
+S011,Nikhil Kumar,O013,Bioinformatics Intern,opportunity,0.2687,0.2774,0.3333,0.9802,python
+S011,Nikhil Kumar,P011,An Introduction to Bioinformatics Algorithms,paper,0.282,0.3536,0.25,1.0,algorithms
+S011,Nikhil Kumar,P007,The PageRank Citation Ranking,paper,0.275,0.5,0.0,1.0,
+S011,Nikhil Kumar,P022,The Anatomy of a Large-Scale Hypertextual Web Search Engine,paper,0.275,0.5,0.0,1.0,
+S011,Nikhil Kumar,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S011,Nikhil Kumar,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S011,Nikhil Kumar,H016,Inter IIT Tech Meet,hackathon,0.5509,0.5774,0.6667,1.0,"c++, python"
+S011,Nikhil Kumar,H014,HackMIT,hackathon,0.5273,0.5345,0.6667,1.0,"c++, python"
+S011,Nikhil Kumar,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S011,Nikhil Kumar,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S011,Nikhil Kumar,H001,Smart India Hackathon 2024,hackathon,0.3,0.3333,0.3333,1.0,python
+S012,Anjali Verma,O014,Product Management Intern,opportunity,0.6445,0.7906,0.6667,0.6457,"excel, market research"
+S012,Anjali Verma,O010,Quant Research Intern,opportunity,0.4898,0.5345,0.6667,0.2891,"excel, sql"
+S012,Anjali Verma,O022,Quant Analyst,opportunity,0.4356,0.5345,0.5,0.2891,"excel, sql"
+S012,Anjali Verma,O002,Data Analyst Intern,opportunity,0.4189,0.4714,0.5,0.6457,"excel, sql"
+S012,Anjali Verma,O001,Machine Learning Intern,opportunity,0.2449,0.2673,0.3333,0.2891,sql
+S012,Anjali Verma,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S012,Anjali Verma,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S012,Anjali Verma,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S012,Anjali Verma,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S012,Anjali Verma,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S012,Anjali Verma,H017,Hack4Good,hackathon,0.2692,0.2774,0.3333,1.0,sql
+S012,Anjali Verma,H005,AngelHack Global,hackathon,0.2637,0.2673,0.3333,1.0,sql
+S012,Anjali Verma,H018,J.P. Morgan Code for Good,hackathon,0.2637,0.2673,0.3333,1.0,sql
+S012,Anjali Verma,H008,Morgan Stanley Code to Give,hackathon,0.0735,0.1336,0.0,1.0,
+S012,Anjali Verma,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,O012,Blockchain Developer Intern,opportunity,0.2654,0.2774,0.3333,0.8581,python
+S013,Rahul Patel,O001,Machine Learning Intern,opportunity,0.2599,0.2673,0.3333,0.8581,python
+S013,Rahul Patel,O007,Data Engineering Intern,opportunity,0.2599,0.2673,0.3333,0.8581,python
+S013,Rahul Patel,O010,Quant Research Intern,opportunity,0.2599,0.2673,0.3333,0.8581,python
+S013,Rahul Patel,O005,NLP Research Intern,opportunity,0.2578,0.2774,0.3333,0.5744,python
+S013,Rahul Patel,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S013,Rahul Patel,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S013,Rahul Patel,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S013,Rahul Patel,H001,Smart India Hackathon 2024,hackathon,0.3,0.3333,0.3333,1.0,python
+S013,Rahul Patel,H006,NASA Space Apps Challenge,hackathon,0.3,0.3333,0.3333,1.0,python
+S013,Rahul Patel,H020,Hack the Climate,hackathon,0.3,0.3333,0.3333,1.0,python
+S014,Pooja Iyer,O020,VLSI Design Engineer,opportunity,0.8024,0.866,1.0,0.7109,"matlab, verilog, vlsi"
+S014,Pooja Iyer,O010,Quant Research Intern,opportunity,0.3274,0.4009,0.3333,0.7109,python
+S014,Pooja Iyer,O006,Embedded Systems Intern,opportunity,0.3085,0.3536,0.3333,0.9168,matlab
+S014,Pooja Iyer,O022,Quant Analyst,opportunity,0.2991,0.4009,0.25,0.7109,python
+S014,Pooja Iyer,O012,Blockchain Developer Intern,opportunity,0.2614,0.2774,0.3333,0.7109,python
+S014,Pooja Iyer,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S014,Pooja Iyer,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S014,Pooja Iyer,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S014,Pooja Iyer,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S014,Pooja Iyer,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S014,Pooja Iyer,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S014,Pooja Iyer,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S014,Pooja Iyer,H001,Smart India Hackathon 2024,hackathon,0.3,0.3333,0.3333,1.0,python
+S014,Pooja Iyer,H006,NASA Space Apps Challenge,hackathon,0.3,0.3333,0.3333,1.0,python
+S014,Pooja Iyer,H020,Hack the Climate,hackathon,0.3,0.3333,0.3333,1.0,python
+S015,Siddharth Mishra,O009,Computer Vision Intern,opportunity,0.7798,0.8018,1.0,0.8581,"machine learning, opencv, python"
+S015,Siddharth Mishra,O005,NLP Research Intern,opportunity,0.5308,0.5547,0.6667,0.8581,"machine learning, python"
+S015,Siddharth Mishra,O001,Machine Learning Intern,opportunity,0.5254,0.5345,0.6667,0.9644,"machine learning, python"
+S015,Siddharth Mishra,O017,Data Scientist,opportunity,0.4623,0.5345,0.5,0.8581,"machine learning, python"
+S015,Siddharth Mishra,O021,Reinforcement Learning Researcher,opportunity,0.3308,0.416,0.3333,0.5744,python
+S015,Siddharth Mishra,P005,Random Forests,paper,0.275,0.5,0.0,1.0,
+S015,Siddharth Mishra,P006,A Survey on Transfer Learning,paper,0.275,0.5,0.0,1.0,
+S015,Siddharth Mishra,P010,XGBoost: A Scalable Tree Boosting System,paper,0.275,0.5,0.0,1.0,
+S015,Siddharth Mishra,P015,A Tutorial on Support Vector Machines,paper,0.275,0.5,0.0,1.0,
+S015,Siddharth Mishra,P020,An Introduction to Statistical Learning,paper,0.275,0.5,0.0,1.0,
+S015,Siddharth Mishra,H009,Adobe GenSolve,hackathon,0.8263,0.866,1.0,1.0,"machine learning, opencv, python"
+S015,Siddharth Mishra,H016,Inter IIT Tech Meet,hackathon,0.8263,0.866,1.0,1.0,"c++, machine learning, python"
+S015,Siddharth Mishra,H014,HackMIT,hackathon,0.6008,0.6682,0.6667,1.0,"c++, python"
+S015,Siddharth Mishra,H001,Smart India Hackathon 2024,hackathon,0.6,0.6667,0.6667,1.0,"machine learning, python"
+S015,Siddharth Mishra,H010,HackerEarth ML Challenge,hackathon,0.5509,0.5774,0.6667,1.0,"machine learning, python"
+S016,Lakshmi Subramanian,O025,Data Engineer,opportunity,0.6791,0.7593,0.75,0.9852,"kafka, python, spark"
+S016,Lakshmi Subramanian,O007,Data Engineering Intern,opportunity,0.6268,0.7171,0.6667,0.9852,"python, spark"
+S016,Lakshmi Subramanian,O017,Data Scientist,opportunity,0.2829,0.3586,0.25,0.937,python
+S016,Lakshmi Subramanian,O012,Blockchain Developer Intern,opportunity,0.2527,0.2481,0.3333,0.9852,python
+S016,Lakshmi Subramanian,O005,NLP Research Intern,opportunity,0.2515,0.2481,0.3333,0.937,python
+S016,Lakshmi Subramanian,P013,MapReduce: Simplified Data Processing on Large Clusters,paper,0.3335,0.4472,0.25,1.0,hadoop
+S016,Lakshmi Subramanian,P025,Designing Data-Intensive Applications,paper,0.3335,0.4472,0.25,1.0,kafka
+S016,Lakshmi Subramanian,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S016,Lakshmi Subramanian,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S016,Lakshmi Subramanian,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S016,Lakshmi Subramanian,H007,Hack the Box CTF,hackathon,0.3626,0.4472,0.3333,1.0,python
+S016,Lakshmi Subramanian,H011,Smart City Hackathon,hackathon,0.3367,0.4,0.3333,1.0,python
+S016,Lakshmi Subramanian,H001,Smart India Hackathon 2024,hackathon,0.2806,0.2981,0.3333,1.0,python
+S016,Lakshmi Subramanian,H006,NASA Space Apps Challenge,hackathon,0.2806,0.2981,0.3333,1.0,python
+S016,Lakshmi Subramanian,H020,Hack the Climate,hackathon,0.2806,0.2981,0.3333,1.0,python
+S017,Aditya Jain,O004,Frontend Developer Intern,opportunity,0.72,0.8402,0.75,0.937,"css, html, javascript"
+S017,Aditya Jain,O012,Blockchain Developer Intern,opportunity,0.276,0.3203,0.3333,0.4256,javascript
+S017,Aditya Jain,O001,Machine Learning Intern,opportunity,0.0,0.0,0.0,0.4256,
+S017,Aditya Jain,O002,Data Analyst Intern,opportunity,0.0,0.0,0.0,0.7685,
+S017,Aditya Jain,O003,Backend Developer Intern,opportunity,0.0,0.0,0.0,0.4256,
+S017,Aditya Jain,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S017,Aditya Jain,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S017,Aditya Jain,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S017,Aditya Jain,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S017,Aditya Jain,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S017,Aditya Jain,H019,OpenHack by Microsoft,hackathon,0.3175,0.3651,0.3333,1.0,javascript
+S017,Aditya Jain,H002,MLH Global Hack,hackathon,0.3082,0.3482,0.3333,1.0,javascript
+S017,Aditya Jain,H004,ETHIndia,hackathon,0.3,0.3333,0.3333,1.0,javascript
+S017,Aditya Jain,H015,Devfolio BuilderHive,hackathon,0.3,0.3333,0.3333,1.0,javascript
+S017,Aditya Jain,H008,Morgan Stanley Code to Give,hackathon,0.2864,0.3086,0.3333,1.0,javascript
+S018,Nandita Bose,O023,UX Researcher,opportunity,0.7041,0.9129,0.6667,0.5744,"spss, survey design"
+S018,Nandita Bose,O013,Bioinformatics Intern,opportunity,0.2654,0.3203,0.3333,0.063,r
+S018,Nandita Bose,O010,Quant Research Intern,opportunity,0.0783,0.1543,0.0,0.2315,
+S018,Nandita Bose,O022,Quant Analyst,opportunity,0.0783,0.1543,0.0,0.2315,
+S018,Nandita Bose,O002,Data Analyst Intern,opportunity,0.0717,0.1361,0.0,0.5744,
+S018,Nandita Bose,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,H003,HackBio,hackathon,0.2928,0.3203,0.3333,1.0,r
+S018,Nandita Bose,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,H002,MLH Global Hack,hackathon,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,H004,ETHIndia,hackathon,0.0,0.0,0.0,1.0,
+S018,Nandita Bose,H005,AngelHack Global,hackathon,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,O012,Blockchain Developer Intern,opportunity,0.6681,0.8006,0.6667,0.9168,"python, solidity"
+S019,Tarun Chandra,O005,NLP Research Intern,opportunity,0.2843,0.3203,0.3333,0.7109,python
+S019,Tarun Chandra,O013,Bioinformatics Intern,opportunity,0.2843,0.3203,0.3333,0.7109,python
+S019,Tarun Chandra,O001,Machine Learning Intern,opportunity,0.284,0.3086,0.3333,0.9168,python
+S019,Tarun Chandra,O007,Data Engineering Intern,opportunity,0.284,0.3086,0.3333,0.9168,python
+S019,Tarun Chandra,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S019,Tarun Chandra,H004,ETHIndia,hackathon,0.6,0.6667,0.6667,1.0,"solidity, web3.js"
+S019,Tarun Chandra,H007,Hack the Box CTF,hackathon,0.4342,0.5774,0.3333,1.0,python
+S019,Tarun Chandra,H011,Smart City Hackathon,hackathon,0.4007,0.5164,0.3333,1.0,python
+S019,Tarun Chandra,H001,Smart India Hackathon 2024,hackathon,0.3284,0.3849,0.3333,1.0,python
+S019,Tarun Chandra,H006,NASA Space Apps Challenge,hackathon,0.3284,0.3849,0.3333,1.0,python
+S020,Ishita Kapoor,O011,UI/UX Design Intern,opportunity,0.6912,0.8333,0.6667,0.9939,"adobe xd, figma"
+S020,Ishita Kapoor,O014,Product Management Intern,opportunity,0.086,0.1581,0.0,0.8909,
+S020,Ishita Kapoor,O023,UX Researcher,opportunity,0.086,0.1581,0.0,0.8909,
+S020,Ishita Kapoor,O004,Frontend Developer Intern,opportunity,0.0665,0.1213,0.0,0.9734,
+S020,Ishita Kapoor,O001,Machine Learning Intern,opportunity,0.0,0.0,0.0,0.6457,
+S020,Ishita Kapoor,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,H002,MLH Global Hack,hackathon,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,H003,HackBio,hackathon,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,H004,ETHIndia,hackathon,0.0,0.0,0.0,1.0,
+S020,Ishita Kapoor,H005,AngelHack Global,hackathon,0.0,0.0,0.0,1.0,
+S021,Manish Yadav,O001,Machine Learning Intern,opportunity,0.8213,0.9354,1.0,0.5,"machine learning, python, sql"
+S021,Manish Yadav,O017,Data Scientist,opportunity,0.646,0.8018,0.75,0.1824,"machine learning, python, sql"
+S021,Manish Yadav,O007,Data Engineering Intern,opportunity,0.501,0.5345,0.6667,0.5,"python, sql"
+S021,Manish Yadav,O010,Quant Research Intern,opportunity,0.501,0.5345,0.6667,0.5,"python, sql"
+S021,Manish Yadav,O005,NLP Research Intern,opportunity,0.4944,0.5547,0.6667,0.1824,"machine learning, python"
+S021,Manish Yadav,P005,Random Forests,paper,0.275,0.5,0.0,1.0,
+S021,Manish Yadav,P006,A Survey on Transfer Learning,paper,0.275,0.5,0.0,1.0,
+S021,Manish Yadav,P010,XGBoost: A Scalable Tree Boosting System,paper,0.275,0.5,0.0,1.0,
+S021,Manish Yadav,P015,A Tutorial on Support Vector Machines,paper,0.275,0.5,0.0,1.0,
+S021,Manish Yadav,P020,An Introduction to Statistical Learning,paper,0.275,0.5,0.0,1.0,
+S021,Manish Yadav,H010,HackerEarth ML Challenge,hackathon,0.8263,0.866,1.0,1.0,"machine learning, python, scikit-learn"
+S021,Manish Yadav,H005,AngelHack Global,hackathon,0.791,0.8018,1.0,1.0,"machine learning, python, sql"
+S021,Manish Yadav,H018,J.P. Morgan Code for Good,hackathon,0.6008,0.6682,0.6667,1.0,"python, sql"
+S021,Manish Yadav,H001,Smart India Hackathon 2024,hackathon,0.6,0.6667,0.6667,1.0,"machine learning, python"
+S021,Manish Yadav,H009,Adobe GenSolve,hackathon,0.5509,0.5774,0.6667,1.0,"machine learning, python"
+S022,Deepa Krishnan,O013,Bioinformatics Intern,opportunity,0.526,0.5547,0.6667,0.7685,"python, r"
+S022,Deepa Krishnan,O010,Quant Research Intern,opportunity,0.335,0.4009,0.3333,0.937,python
+S022,Deepa Krishnan,O022,Quant Analyst,opportunity,0.3061,0.4009,0.25,0.937,python
+S022,Deepa Krishnan,O002,Data Analyst Intern,opportunity,0.2815,0.3536,0.25,0.9852,python
+S022,Deepa Krishnan,O012,Blockchain Developer Intern,opportunity,0.2675,0.2774,0.3333,0.937,python
+S022,Deepa Krishnan,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S022,Deepa Krishnan,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S022,Deepa Krishnan,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S022,Deepa Krishnan,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S022,Deepa Krishnan,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S022,Deepa Krishnan,H003,HackBio,hackathon,0.5384,0.5547,0.6667,1.0,"python, r"
+S022,Deepa Krishnan,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S022,Deepa Krishnan,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python
+S022,Deepa Krishnan,H001,Smart India Hackathon 2024,hackathon,0.3,0.3333,0.3333,1.0,python
+S022,Deepa Krishnan,H006,NASA Space Apps Challenge,hackathon,0.3,0.3333,0.3333,1.0,python
+S023,Gaurav Tiwari,O008,Android Developer Intern,opportunity,0.8925,1.0,1.0,0.9168,"android, firebase, java"
+S023,Gaurav Tiwari,O024,Android Developer,opportunity,0.6169,0.9428,0.3333,0.7109,android
+S023,Gaurav Tiwari,O003,Backend Developer Intern,opportunity,0.297,0.3651,0.3333,0.3543,java
+S023,Gaurav Tiwari,O018,Backend Engineer,opportunity,0.2219,0.2722,0.25,0.3543,java
+S023,Gaurav Tiwari,O001,Machine Learning Intern,opportunity,0.0,0.0,0.0,0.3543,
+S023,Gaurav Tiwari,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,H012,Google Solution Challenge,hackathon,0.6824,0.8165,0.6667,1.0,"android, firebase"
+S023,Gaurav Tiwari,H013,Flipkart Grid,hackathon,0.2928,0.3203,0.3333,1.0,java
+S023,Gaurav Tiwari,H002,MLH Global Hack,hackathon,0.0957,0.1741,0.0,1.0,
+S023,Gaurav Tiwari,H001,Smart India Hackathon 2024,hackathon,0.0,0.0,0.0,1.0,
+S023,Gaurav Tiwari,H003,HackBio,hackathon,0.0,0.0,0.0,1.0,
+S024,Shruti Pandey,O021,Reinforcement Learning Researcher,opportunity,0.8624,0.9608,1.0,0.8176,"python, pytorch, reinforcement learning"
+S024,Shruti Pandey,O019,ML Research Engineer,opportunity,0.5875,0.7698,0.5,0.8176,"python, pytorch"
+S024,Shruti Pandey,O005,NLP Research Intern,opportunity,0.3791,0.4804,0.3333,0.9526,python
+S024,Shruti Pandey,O009,Computer Vision Intern,opportunity,0.3695,0.4629,0.3333,0.9526,python
+S024,Shruti Pandey,O012,Blockchain Developer Intern,opportunity,0.2925,0.3203,0.3333,0.989,python
+S024,Shruti Pandey,P004,Playing Atari with Deep Reinforcement Learning,paper,0.405,0.5774,0.25,1.0,reinforcement learning
+S024,Shruti Pandey,P014,Proximal Policy Optimization Algorithms,paper,0.3175,0.5774,0.0,1.0,
+S024,Shruti Pandey,P021,Mastering the Game of Go with Deep Neural Networks,paper,0.3175,0.5774,0.0,1.0,
+S024,Shruti Pandey,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S024,Shruti Pandey,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S024,Shruti Pandey,H007,Hack the Box CTF,hackathon,0.4342,0.5774,0.3333,1.0,python
+S024,Shruti Pandey,H011,Smart City Hackathon,hackathon,0.4007,0.5164,0.3333,1.0,python
+S024,Shruti Pandey,H001,Smart India Hackathon 2024,hackathon,0.3284,0.3849,0.3333,1.0,python
+S024,Shruti Pandey,H006,NASA Space Apps Challenge,hackathon,0.3284,0.3849,0.3333,1.0,python
+S024,Shruti Pandey,H020,Hack the Climate,hackathon,0.3284,0.3849,0.3333,1.0,python
+S025,Varun Nambiar,O002,Data Analyst Intern,opportunity,0.8562,0.9428,1.0,0.8581,"excel, python, sql, tableau"
+S025,Varun Nambiar,O010,Quant Research Intern,opportunity,0.7573,0.8018,1.0,0.5744,"excel, python, sql"
+S025,Varun Nambiar,O022,Quant Analyst,opportunity,0.6735,0.8018,0.75,0.5744,"excel, python, sql"
+S025,Varun Nambiar,O001,Machine Learning Intern,opportunity,0.5049,0.5345,0.6667,0.5744,"python, sql"
+S025,Varun Nambiar,O007,Data Engineering Intern,opportunity,0.5049,0.5345,0.6667,0.5744,"python, sql"
+S025,Varun Nambiar,P001,Attention Is All You Need,paper,0.0,0.0,0.0,1.0,
+S025,Varun Nambiar,P002,Deep Residual Learning for Image Recognition,paper,0.0,0.0,0.0,1.0,
+S025,Varun Nambiar,P003,BERT: Pre-training of Deep Bidirectional Transformers,paper,0.0,0.0,0.0,1.0,
+S025,Varun Nambiar,P004,Playing Atari with Deep Reinforcement Learning,paper,0.0,0.0,0.0,1.0,
+S025,Varun Nambiar,P005,Random Forests,paper,0.0,0.0,0.0,1.0,
+S025,Varun Nambiar,H017,Hack4Good,hackathon,0.5384,0.5547,0.6667,1.0,"python, sql"
+S025,Varun Nambiar,H005,AngelHack Global,hackathon,0.5273,0.5345,0.6667,1.0,"python, sql"
+S025,Varun Nambiar,H018,J.P. Morgan Code for Good,hackathon,0.5273,0.5345,0.6667,1.0,"python, sql"
+S025,Varun Nambiar,H007,Hack the Box CTF,hackathon,0.3917,0.5,0.3333,1.0,python
+S025,Varun Nambiar,H011,Smart City Hackathon,hackathon,0.3626,0.4472,0.3333,1.0,python

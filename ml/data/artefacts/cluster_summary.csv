@@ -1,0 +1,11 @@
+cluster_id,size,avg_cgpa,top_skills,top_interests,common_career_goals
+0,2,8.45,"python, r, bioinformatics","drug discovery, genomics, research","bioinformatics researcher, computational biologist"
+1,7,8.44,"python, java, spring boot","backend, cloud, devops","backend engineer, software research engineer, backend developer"
+2,4,8.38,"python, machine learning, sql","data science, finance, ai","data scientist, full stack developer, data analyst"
+3,3,7.6,"sql, excel, python","analytics, business intelligence, product management","business analyst, product manager, quant analyst"
+4,2,7.15,"matlab, c++, embedded systems","robotics, iot, hardware","embedded engineer, mechanical design engineer"
+5,1,7.8,"vlsi, verilog, matlab","chip design, embedded, semiconductor",vlsi engineer
+6,1,7.6,"python, tensorflow, nlp","nlp, ai research, chatbots",nlp engineer
+7,2,8.25,"python, java, machine learning","ai, programming, mobile apps","software engineer, computer vision engineer"
+8,2,7.55,"html, css, javascript","ui/ux, web development, design","frontend developer, ui/ux designer"
+9,1,7.3,"java, android, firebase","mobile development, ui, apps",android developer
