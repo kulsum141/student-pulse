@@ -1,0 +1,158 @@
+.heroCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: linear-gradient(135deg, rgba(197,184,245,0.2), rgba(245,184,216,0.18));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 26px 24px;
+  margin-bottom: 22px;
+}
+
+.greeting {
+  font-size: clamp(1.8rem, 2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.subtext {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, var(--accent), #9d7ef5);
+  color: white;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.24);
+}
+
+.secondaryButton {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.recommendationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.panelCard {
+  min-height: 260px;
+}
+
+.progressWrap {
+  margin: 18px 0 14px;
+}
+
+.metaList,
+.skillList,
+.savedList,
+.suggestionList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metaList > div,
+.skillList > div,
+.savedItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.metaLabel,
+.skillList span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  margin-bottom: 4px;
+}
+
+.skillList strong,
+.metaList strong,
+.savedItem strong {
+  color: var(--text-primary);
+}
+
+.assistantText {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 0 16px;
+}
+
+.suggestionList {
+  margin-top: 16px;
+}
+
+.suggestionChip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.58);
+  color: var(--text-primary);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.savedItem small {
+  display: block;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.savedItem span {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .heroCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+}

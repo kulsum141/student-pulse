@@ -1,0 +1,78 @@
+.wrapper {
+  padding: 18px;
+}
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 360px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  line-height: 1.6;
+}
+
+.assistant {
+  background: rgba(255,255,255,0.7);
+  color: var(--text-primary);
+  align-self: flex-start;
+}
+
+.user {
+  background: linear-gradient(135deg, var(--lavender), #e3d7ff);
+  color: var(--text-primary);
+  align-self: flex-end;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.suggestion {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.inputRow input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.8);
+  color: var(--text-primary);
+}
+
+.sendButton {
+  background: var(--accent);
+  color: white;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .inputRow {
+    flex-direction: column;
+  }
+}

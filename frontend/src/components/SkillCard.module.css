@@ -1,0 +1,30 @@
+.card {
+  min-height: 106px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+.pill {
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.75);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}

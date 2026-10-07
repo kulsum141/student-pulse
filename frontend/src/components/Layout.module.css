@@ -3,17 +3,25 @@
   min-height: 100vh;
 }
 
-.main {
+.content {
   flex: 1;
   margin-left: var(--sidebar-width);
-  padding: 32px 36px;
+  padding: 26px 28px 48px;
   min-width: 0;
+}
+
+.main {
   max-width: 1200px;
+  min-width: 0;
 }
 
 @media (max-width: 900px) {
-  .main {
+  .content {
     margin-left: 0;
-    padding: 20px 16px 80px;
+    padding: 18px 14px 86px;
+  }
+
+  .main {
+    max-width: 100%;
   }
 }

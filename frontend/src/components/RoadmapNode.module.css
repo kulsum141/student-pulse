@@ -1,0 +1,48 @@
+.node {
+  min-height: 150px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.node h3 {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.node ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.node li {
+  position: relative;
+  padding-left: 12px;
+}
+
+.node li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.done .dot { background: #67d9a4; }
+.active .dot { background: var(--accent); }
+.next .dot { background: #e1d9ff; }

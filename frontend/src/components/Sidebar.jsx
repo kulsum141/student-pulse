@@ -2,18 +2,19 @@ import { NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.css'
 
 const NAV = [
-  { to: '/dashboard',   icon: '🏠', label: 'Dashboard'    },
-  { to: '/roadmap',     icon: '🗺️',  label: 'My Roadmap'   },
-  { to: '/skill-gap',   icon: '📊', label: 'Skill Gap'    },
-  { to: '/internships', icon: '💼', label: 'Internships'  },
-  { to: '/hackathons',  icon: '🏆', label: 'Hackathons'   },
-  { to: '/research',    icon: '📄', label: 'Research'     },
-  { to: '/assistant',   icon: '🤖', label: 'AI Assistant' },
+  { to: '/dashboard', icon: '🏠', label: 'Dashboard' },
+  { to: '/internships', icon: '💼', label: 'Internships' },
+  { to: '/hackathons', icon: '🏆', label: 'Hackathons' },
+  { to: '/research', icon: '📄', label: 'Research Papers' },
+  { to: '/roadmap', icon: '🗺️', label: 'Career Roadmap' },
+  { to: '/skill-gap', icon: '📊', label: 'Skill Gap' },
+  { to: '/assistant', icon: '🤖', label: 'AI Assistant' },
+  { to: '/saved', icon: '🔖', label: 'Saved' },
 ]
 
 const BOTTOM = [
-  { to: '/profile',   icon: '👤', label: 'Profile'    },
-  { to: '/customize', icon: '🎨', label: 'Customize'  },
+  { to: '/profile', icon: '👤', label: 'Profile' },
+  { to: '/customize', icon: '⚙️', label: 'Customization' },
 ]
 
 export default function Sidebar() {
@@ -29,9 +30,7 @@ export default function Sidebar() {
           <NavLink
             key={item.to}
             to={item.to}
-            className={({ isActive }) =>
-              `${styles.link} ${isActive ? styles.active : ''}`
-            }
+            className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
           >
             <span className={styles.icon}>{item.icon}</span>
             <span className={styles.label}>{item.label}</span>
@@ -46,9 +45,7 @@ export default function Sidebar() {
           <NavLink
             key={item.to}
             to={item.to}
-            className={({ isActive }) =>
-              `${styles.link} ${isActive ? styles.active : ''}`
-            }
+            className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
           >
             <span className={styles.icon}>{item.icon}</span>
             <span className={styles.label}>{item.label}</span>

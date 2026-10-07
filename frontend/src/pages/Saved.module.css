@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  min-height: 200px;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.type {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.4);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.match {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.card h3 {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.card small {
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 18px;
+}
+
+.button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-weight: 700;
+}
