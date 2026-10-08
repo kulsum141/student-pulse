@@ -1,50 +1,43 @@
 """Profile API — /api/profile"""
+import sqlite3
 from typing import List
-from fastapi import APIRouter, HTTPException
-from backend.models.schemas import StudentProfile
-from backend.services import ml_service
+from fastapi import APIRouter, Depends, HTTPException
+from backend.dependencies import get_current_student, require_student_id
+from backend.models.schemas import ProfileUpdate, StudentProfile
+from backend.services import database
 
 router = APIRouter()
 
 
-def _to_list(val):
-    if isinstance(val, list):
-        return val
-    if isinstance(val, str):
-        return [s.strip() for s in val.split(",") if s.strip()]
-    return []
-
-
-def _row_to_profile(row: dict) -> StudentProfile:
-    return StudentProfile(
-        student_id=row.get("student_id", ""),
-        name=row.get("name", ""),
-        email=row.get("email"),
-        department=row.get("department"),
-        year_of_study=int(row.get("year_of_study", 1)) if row.get("year_of_study") else None,
-        cgpa=float(row.get("cgpa", 0)) if row.get("cgpa") else None,
-        skills=_to_list(row.get("skills", [])),
-        interests=_to_list(row.get("interests", [])),
-        preferred_location=row.get("preferred_location"),
-        open_to_remote=bool(row.get("open_to_remote", False)),
-        past_internships=int(row.get("past_internships", 0)) if row.get("past_internships") else 0,
-        courses_completed=_to_list(row.get("courses_completed", [])),
-        language_known=_to_list(row.get("language_known", [])),
-        career_goal=str(row.get("career_goal", "")) if row.get("career_goal") else None,
-    )
-
-
 @router.get("/", response_model=List[StudentProfile])
-def list_profiles():
-    """Return all student profiles."""
-    rows = ml_service.get_all_students()
-    return [_row_to_profile(r) for r in rows]
+def list_profiles(student: dict = Depends(get_current_student)):
+    """Return only the authenticated student's profile."""
+    return [StudentProfile(**student)]
+
+
+@router.get("/me", response_model=StudentProfile)
+def get_my_profile(student: dict = Depends(get_current_student)):
+    return StudentProfile(**student)
+
+
+@router.put("/me", response_model=StudentProfile)
+def update_my_profile(body: ProfileUpdate, student: dict = Depends(get_current_student)):
+    fields = body.model_dump(exclude_unset=True)
+    if not fields:
+        return StudentProfile(**student)
+    try:
+        profile = database.update_student(student["student_id"], fields)
+    except sqlite3.IntegrityError as exc:
+        raise HTTPException(status_code=409, detail="That email is already in use") from exc
+    if profile is None:
+        raise HTTPException(status_code=404, detail="Student profile not found")
+    return StudentProfile(**profile)
 
 
 @router.get("/{student_id}", response_model=StudentProfile)
-def get_profile(student_id: str):
-    """Return a single student profile."""
-    row = ml_service.get_student(student_id)
-    if row is None:
+def get_profile(student_id: str, _student: dict = Depends(require_student_id)):
+    """Return the authenticated student's profile."""
+    profile = database.get_student(student_id)
+    if profile is None:
         raise HTTPException(status_code=404, detail=f"Student '{student_id}' not found")
-    return _row_to_profile(row)
+    return StudentProfile(**profile)

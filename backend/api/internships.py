@@ -1,7 +1,8 @@
 """Internships API — /api/internships"""
 from typing import Optional
-from fastapi import APIRouter, Query
-from backend.services import ml_service
+from fastapi import APIRouter, Depends, HTTPException, Query
+from backend.dependencies import get_current_student
+from backend.services import database, ml_service
 
 router = APIRouter()
 
@@ -23,14 +24,21 @@ def list_internships(
     top_k: int = Query(10, ge=1, le=25),
     type: Optional[str] = Query(None),
     remote: Optional[bool] = Query(None),
+    student: dict = Depends(get_current_student),
 ):
+    if student_id and student_id != student["student_id"]:
+        raise HTTPException(status_code=403, detail="You cannot view recommendations for another student")
     filters = {}
     if type:
         filters["type"] = type
     if remote is not None:
         filters["remote"] = remote
 
-    items = ml_service.get_internships(student_id, top_k=top_k, filters=filters or None)
+    items = ml_service.recommend_category_for_profile(
+        student, "opportunity", top_k=top_k, filters=filters or None
+    )
+    if items is None:
+        raise HTTPException(status_code=503, detail="Recommendation engine is unavailable")
 
     if items and hasattr(items[0], "item_id"):
         # ML recommendation objects
@@ -45,4 +53,6 @@ def list_internships(
                                "score": rec.score, "skill_overlap": rec.skill_overlap,
                                "matched_skills": rec.matched_skills})
         return result
-    return [_normalise(i) for i in items]
+    recommendations = [_normalise(i) for i in items]
+    stored = database.list_opportunities("internship")
+    return recommendations + stored[:max(0, top_k - len(recommendations))]

@@ -8,7 +8,7 @@
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 22px 0 18px;
   z-index: 100;
   overflow-y: auto;
 }
@@ -17,12 +17,20 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 20px 18px;
+  padding: 0 18px 19px;
   margin-bottom: 12px;
 }
 
 .logo {
-  font-size: 22px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(145deg, #aa8df0, #e99fc9);
+  border-radius: 13px;
+  box-shadow: 0 7px 16px rgba(153, 117, 206, 0.2);
+  flex-shrink: 0;
 }
 
 .brandBlock {
@@ -31,15 +39,20 @@
 }
 
 .brandName {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.3px;
 }
 
 .brandTag {
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 10px;
+}
+
+.closeButton {
+  display: none;
+  margin-left: auto;
+  color: var(--text-secondary);
 }
 
 .profileSummary {
@@ -50,7 +63,7 @@
   padding: 10px 12px;
   background: rgba(255,255,255,0.5);
   border: 1px solid rgba(139,92,246,0.15);
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .avatar {
@@ -75,20 +88,29 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 0 12px;
+  gap: 4px;
+  padding: 0 10px;
+}
+
+.navCaption {
+  padding: 0 20px;
+  margin: 10px 0 8px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .link {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
-  border-radius: 12px;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 11px;
   color: var(--text-secondary);
   font-size: 13.5px;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
 .link:hover {
@@ -96,17 +118,25 @@
   color: var(--accent);
 }
 
+.link:hover .icon {
+  transform: translateX(1px);
+}
+
 .active {
-  background: rgba(139,92,246,0.12);
-  color: var(--accent);
+  background: #eee8fb;
+  color: #7259ae;
   font-weight: 600;
 }
 
+.active .icon {
+  color: #8166c6;
+}
+
 .icon {
-  font-size: 16px;
   width: 22px;
-  text-align: center;
+  color: #9384b4;
   flex-shrink: 0;
+  transition: transform 0.18s ease, color 0.18s ease;
 }
 
 .label {
@@ -115,11 +145,11 @@
 
 .footerCard {
   margin-top: auto;
-  margin-inline: 16px;
-  padding: 16px 14px;
-  background: linear-gradient(135deg, rgba(197,184,245,0.18), rgba(245,184,216,0.2));
+  margin-inline: 14px;
+  padding: 15px 13px;
+  background: linear-gradient(145deg, #f3edff, #fff0f5 74%, #fff9ed);
   border: 1px solid rgba(139,92,246,0.14);
-  border-radius: 18px;
+  border-radius: 15px;
   box-shadow: 0 12px 24px rgba(139,92,246,0.08);
 }
 
@@ -133,59 +163,60 @@
 
 .footerCard h4 {
   color: var(--text-primary);
-  font-size: 1rem;
-  margin-bottom: 12px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  margin-bottom: 11px;
 }
 
 .cardButton {
   width: 100%;
   padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 10px;
   background: #fff;
   border: 1px solid var(--border);
   color: var(--text-primary);
   font-weight: 700;
+  font-size: 12px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .sidebar {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-top: 1px solid var(--border);
-    padding: 8px 6px 12px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    width: min(300px, calc(100vw - 48px));
+    height: 100dvh;
+    transform: translateX(-105%);
+    transition: transform 0.24s ease;
+    box-shadow: 16px 0 50px rgba(51, 39, 77, 0.12);
   }
 
-  .brand,
-  .profileSummary,
-  .footerCard {
-    display: none;
+  .sidebarOpen {
+    transform: translateX(0);
   }
 
-  .nav {
-    flex-direction: row;
-    padding: 0;
-    gap: 4px;
-    justify-content: space-around;
-    min-width: max-content;
-  }
-
-  .link {
-    flex-direction: column;
-    gap: 3px;
-    padding: 6px 8px;
-    font-size: 10px;
+  .closeButton {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
     border-radius: 10px;
   }
 
-  .icon {
-    font-size: 18px;
-    width: auto;
+  .closeButton:hover {
+    background: rgba(139, 92, 246, 0.08);
   }
+
+  .scrimVisible {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(41, 31, 58, 0.24);
+    backdrop-filter: blur(2px);
+  }
+}
+
+.scrim {
+  display: none;
 }

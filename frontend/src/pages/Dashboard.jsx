@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, BriefcaseBusiness, Map, MessageCircle, SlidersHorizontal, Sparkles } from 'lucide-react'
 import Card from '../components/Card'
+import EmptyState from '../components/EmptyState'
 import PageHeader from '../components/PageHeader'
 import OpportunityCard from '../components/OpportunityCard'
 import ProgressBar from '../components/ProgressBar'
@@ -7,29 +10,19 @@ import SectionHeader from '../components/SectionHeader'
 import StatCard from '../components/StatCard'
 import LoadingState from '../components/LoadingState'
 import ErrorState from '../components/ErrorState'
-import { mockApi } from '../services/mockApi'
+import { dashboardApi, recommendationsApi, STUDENT_ID } from '../api'
 import styles from './Dashboard.module.css'
-
-const researchPicks = [
-  { id: 'PAP-33', title: 'Efficient Feature Selection for Predictive Learning', organization: 'ACM Research', domain: 'Machine Learning', difficulty: 'Advanced', match: 90 },
-  { id: 'PAP-41', title: 'Edge AI for Smart Campus Systems', organization: 'IEEE Papers', domain: 'Embedded AI', difficulty: 'Intermediate', match: 85 },
-  { id: 'PAP-22', title: 'Reliable Distributed Storage for Education Platforms', organization: 'Springer', domain: 'Distributed Systems', difficulty: 'Advanced', match: 83 },
-]
-
-const deadlines = [
-  { title: 'Google Cloud Internship', days: 3 },
-  { title: 'AI Hackathon', days: 6 },
-  { title: 'Research Fellows Program', days: 9 },
-]
 
 export default function Dashboard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [actionError, setActionError] = useState('')
+  const [savedResearch, setSavedResearch] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('All')
 
   useEffect(() => {
-    mockApi.getDashboardData()
+    dashboardApi.get(STUDENT_ID)
       .then(({ data }) => {
         setData(data)
         setLoading(false)
@@ -55,21 +48,58 @@ export default function Dashboard() {
   if (loading) return <LoadingState text="Fetching your recommendations..." />
   if (error) return <ErrorState message={error} />
 
-  const { metrics, recommendations, saved, roadmap, skillGap, assistantSuggestions } = data
+  const { metrics, recommendations, saved, roadmap, skillGap, assistantSuggestions, profile } = data
+  const hour = new Date().getHours()
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
+  const hasRecommendations = Object.values(recommendations).some(items => items.length > 0)
+  const researchPicks = recommendations.papers.slice(0, 3)
+  const deadlines = [...recommendations.opportunities, ...recommendations.hackathons]
+    .filter(item => item.deadline)
+    .slice(0, 3)
+  const saveDashboardItem = async item => {
+    setActionError('')
+    try {
+      await recommendationsApi.save(STUDENT_ID, item)
+      setSavedResearch(current => [...new Set([...current, item.id])])
+    } catch (requestError) {
+      setActionError(requestError.message || 'Unable to save this opportunity.')
+    }
+  }
 
   return (
     <>
       <PageHeader title="Dashboard" subtitle="Your personalized learning and opportunity overview" />
 
       <div className={styles.heroCard}>
-        <div>
-          <p className={styles.greeting}>Good morning, Student! 👋</p>
-          <p className={styles.subtext}>Here is what is waiting for you today.</p>
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrow}><Sparkles size={14} /> YOUR PERSONAL PULSE</span>
+          <p className={styles.greeting}>{greeting}, {profile.name}!</p>
+          <p className={styles.subtext}>A few thoughtful next steps can take you somewhere wonderful.</p>
+          <div className={styles.heroActions}>
+            <Link className={styles.primaryButton} to="/opportunities">Explore opportunities <ArrowRight size={16} /></Link>
+            <Link className={styles.secondaryButton} to="/roadmap">Continue roadmap</Link>
+          </div>
         </div>
-        <div className={styles.heroActions}>
-          <button className={styles.primaryButton}>Explore Recommendations</button>
-          <button className={styles.secondaryButton}>Continue Roadmap</button>
+        <div className={styles.profileSnapshot}>
+          <div className={styles.snapshotTop}>
+            <div className={styles.snapshotAvatar}>{profile.name?.charAt(0) || 'S'}</div>
+            <div><strong>{profile.name}</strong><span>{profile.department}</span></div>
+            <Link to="/profile" aria-label="Edit student profile"><ArrowRight size={16} /></Link>
+          </div>
+          <div className={styles.snapshotDetails}>
+            <div><span>Year</span><strong>{profile.year_of_study}</strong></div>
+            <div><span>CGPA</span><strong>{profile.cgpa}</strong></div>
+          </div>
+          <div className={styles.careerGoal}><span>Working toward</span><strong>{profile.career_goal}</strong></div>
         </div>
+      </div>
+
+      <div className={styles.quickActions} aria-label="Quick actions">
+        <span className={styles.quickActionsLabel}>QUICK ACTIONS</span>
+        <Link to="/internships"><BriefcaseBusiness size={17} /> Find an internship</Link>
+        <Link to="/roadmap"><Map size={17} /> Pick up your roadmap</Link>
+        <Link to="/assistant"><MessageCircle size={17} /> Ask your AI assistant</Link>
+        <Link to="/customize"><SlidersHorizontal size={17} /> Tune your interests</Link>
       </div>
 
       <div className={styles.statsGrid}>
@@ -79,7 +109,8 @@ export default function Dashboard() {
       </div>
 
       <SectionHeader title="Recommended for You" subtitle="A mix of internships, hackathons, and research ideas" />
-      <div className={styles.recommendationGrid}>
+      {actionError && <ErrorState message={actionError} />}
+      {hasRecommendations ? <div className={styles.recommendationGrid}>
         {recommendations.opportunities.slice(0, 2).map(item => (
           <OpportunityCard
             key={item.id}
@@ -93,6 +124,7 @@ export default function Dashboard() {
             skills={item.skills}
             description={item.description}
             actionLabel="Apply"
+            onSave={() => saveDashboardItem(item)}
           />
         ))}
         {recommendations.hackathons.slice(0, 1).map(item => (
@@ -108,6 +140,7 @@ export default function Dashboard() {
             skills={item.skills}
             description={item.description}
             actionLabel="View"
+            onSave={() => saveDashboardItem(item)}
           />
         ))}
         {recommendations.papers.slice(0, 1).map(item => (
@@ -123,9 +156,10 @@ export default function Dashboard() {
             skills={item.skills}
             description={item.description}
             actionLabel="Read"
+            onSave={() => saveDashboardItem(item)}
           />
         ))}
-      </div>
+      </div> : <EmptyState title="Your recommendations are on their way" description="Add a few interests to your profile and we’ll find a good place to start." />}
 
       <SectionHeader title="Explore Opportunities" subtitle="Filter by opportunity type, domain, and timeline" />
       <div className={styles.filterRow}>
@@ -140,11 +174,11 @@ export default function Dashboard() {
           </button>
         ))}
       </div>
-      <div className={styles.exploreGrid}>
+      {opportunityList.length > 0 ? <div className={styles.exploreGrid}>
         {opportunityList.map(item => (
           <OpportunityCard
             key={item.id}
-            type={item.category === 'Hackathons' ? 'hackathon' : item.category === 'Research' ? 'paper' : 'internship'}
+            type={item.type}
             title={item.title}
             organization={item.organization}
             domain={item.domain}
@@ -154,36 +188,36 @@ export default function Dashboard() {
             skills={item.skills || ['Python', 'Research']}
             description={item.description}
             actionLabel={item.category === 'Research' ? 'Read' : 'View'}
+            onSave={() => saveDashboardItem(item)}
           />
         ))}
-      </div>
+      </div> : <EmptyState title="No matches in this category yet" description="Try another filter or update your interests to discover more." />}
 
       <div className={styles.splitGrid}>
         <Card className={styles.panelCard} accent="mint">
           <SectionHeader title="Your Learning Roadmap" subtitle="Track your weekly growth" />
           <div className={styles.progressWrap}>
-            <ProgressBar value={roadmap.progress} label="Python" color="mint" />
-            <ProgressBar value={60} label="Cloud Computing" color="sky" />
-            <ProgressBar value={40} label="DSA" color="pink" />
-            <ProgressBar value={70} label="Web Development" color="lavender" />
+            {(roadmap.steps || []).slice(0, 4).map((step, index) => (
+              <ProgressBar key={step.title} value={step.progress} label={step.title} color={['mint', 'sky', 'pink', 'lavender'][index]} />
+            ))}
           </div>
-          <button className={styles.secondaryButton}>View Full Roadmap</button>
+          <Link className={styles.secondaryButton} to="/roadmap">View Full Roadmap</Link>
         </Card>
 
         <Card className={styles.panelCard} accent="peach">
-          <SectionHeader title="Your Skill Gap" subtitle="Skills to strengthen" />
+          <SectionHeader title="Your Skill Gap" subtitle={`${skillGap.readiness}% ready for ${skillGap.targetCareer}`} />
           <div className={styles.skillList}>
-            <div className={styles.skillPill}><span>Strong Skills</span><strong>Python, HTML/CSS</strong></div>
-            <div className={styles.skillPill}><span>Skills to Improve</span><strong>AWS, DSA, SQL</strong></div>
+            <div className={styles.skillPill}><span>Matched skills</span><strong>{skillGap.matchedSkills.slice(0, 3).join(', ') || 'No current matches'}</strong></div>
+            <div className={styles.skillPill}><span>Skills to strengthen</span><strong>{skillGap.missingSkills.slice(0, 3).join(', ') || 'No skill gaps found'}</strong></div>
           </div>
-          <button className={styles.primaryButton}>Improve My Skills</button>
+          <Link className={styles.primaryButton} to="/skill-gap">Improve My Skills</Link>
         </Card>
       </div>
 
       <div className={styles.lowerGrid}>
         <Card className={styles.panelCard} accent="sky">
           <SectionHeader title="Research Picks" subtitle="Fresh reads for your focus area" />
-          <div className={styles.researchGrid}>
+          {researchPicks.length > 0 ? <div className={styles.researchGrid}>
             {researchPicks.map(paper => (
               <div key={paper.id} className={styles.researchCard}>
                 <div className={styles.researchMeta}>
@@ -193,42 +227,44 @@ export default function Dashboard() {
                 <h3>{paper.title}</h3>
                 <p>{paper.organization}</p>
                 <div className={styles.researchFooter}>
-                  <small>{paper.difficulty}</small>
+                  <small>{paper.difficulty || paper.domain}</small>
                   <div className={styles.researchActions}>
-                    <button className={styles.secondaryButton}>Save</button>
-                    <button className={styles.primaryButton}>Read</button>
+                    <button type="button" className={styles.secondaryButton} disabled={savedResearch.includes(paper.id)} onClick={() => saveDashboardItem(paper)}>
+                      {savedResearch.includes(paper.id) ? 'Saved' : 'Save'}
+                    </button>
+                    <Link className={styles.primaryButton} to="/research">Read</Link>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
+          </div> : <EmptyState title="No research picks yet" description="Research recommendations will appear here when available." />}
         </Card>
 
         <Card className={styles.panelCard} accent="pink">
-          <SectionHeader title="Don't Miss These" subtitle="Upcoming deadlines" />
-          <div className={styles.deadlineList}>
+          <SectionHeader title="Upcoming internships & deadlines" subtitle="Application windows worth keeping in sight" />
+          {deadlines.length > 0 ? <div className={styles.deadlineList}>
             {deadlines.map(item => (
               <div key={item.title} className={styles.deadlineItem}>
                 <div>
                   <strong>{item.title}</strong>
-                  <small>Deadline: {item.days} days</small>
+                  <small>Deadline: {item.deadline}</small>
                 </div>
-                <span>{item.days}d</span>
+                <span>Due</span>
               </div>
             ))}
-          </div>
+          </div> : <EmptyState title="No deadlines available" description="Listings will show here when the backend includes deadline information." />}
         </Card>
       </div>
 
       <Card className={styles.personalizeCard} accent="lavender">
         <SectionHeader title="Customize Your Pulse" subtitle="Choose your interests and preferred opportunities" />
         <div className={styles.preferenceRow}>
-          {['AI / ML', 'Cloud', 'Cyber Security', 'Web Development', 'Data Science', 'App Development', 'Research', 'Startups'].map(item => (
+          {profile.interests.map(item => (
             <span key={item} className={styles.preferencePill}>{item}</span>
           ))}
         </div>
         <div className={styles.preferenceRow}>
-          {['Internship', 'Hackathon', 'Research', 'All'].map(item => (
+          {profile.preferred_opportunity_types.map(item => (
             <span key={item} className={styles.preferencePill}>{item}</span>
           ))}
         </div>
@@ -238,7 +274,7 @@ export default function Dashboard() {
         <Card className={styles.panelCard} accent="pink">
           <SectionHeader title="AI Assistant" subtitle="Need help planning your next step?" />
           <p className={styles.assistantText}>Ask Student Pulse AI</p>
-          <button className={styles.secondaryButton}>Start chatting</button>
+          <Link className={styles.secondaryButton} to="/assistant">Start chatting</Link>
           <div className={styles.suggestionList}>
             {assistantSuggestions.slice(0, 2).map(item => (
               <span key={item} className={styles.suggestionChip}>{item}</span>
@@ -248,17 +284,17 @@ export default function Dashboard() {
 
         <Card className={styles.panelCard} accent="peach">
           <SectionHeader title="Saved items" subtitle="Recently saved for later" />
-          <div className={styles.savedList}>
+          {saved.length > 0 ? <div className={styles.savedList}>
             {saved.slice(0, 3).map(item => (
               <div key={item.id} className={styles.savedItem}>
                 <div>
                   <strong>{item.title}</strong>
                   <small>{item.organization}</small>
                 </div>
-                <span>{item.match}%</span>
+                <span>{item.type}</span>
               </div>
             ))}
-          </div>
+          </div> : <EmptyState title="No saved opportunities" description="Save a recommendation to keep it here for later." />}
         </Card>
       </div>
     </>

@@ -3,9 +3,10 @@ import Card from '../components/Card'
 import OpportunityCard from '../components/OpportunityCard'
 import PageHeader from '../components/PageHeader'
 import SectionHeader from '../components/SectionHeader'
+import EmptyState from '../components/EmptyState'
 import LoadingState from '../components/LoadingState'
 import ErrorState from '../components/ErrorState'
-import { mockApi } from '../services/mockApi'
+import { opportunitiesApi, recommendationsApi, STUDENT_ID } from '../api'
 import styles from './OpportunityPage.module.css'
 
 export default function Internships() {
@@ -15,7 +16,7 @@ export default function Internships() {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    mockApi.getInternships()
+    opportunitiesApi.internships({ student_id: STUDENT_ID, top_k: 25 })
       .then(({ data }) => {
         setItems(data)
         setLoading(false)
@@ -51,7 +52,7 @@ export default function Internships() {
       </Card>
 
       <SectionHeader title="Matches for you" subtitle={`${filtered.length} internship opportunities`} />
-      <div className={styles.grid}>
+      {filtered.length > 0 ? <div className={styles.grid}>
         {filtered.map(item => (
           <OpportunityCard
             key={item.id}
@@ -63,11 +64,12 @@ export default function Internships() {
             deadline={item.deadline}
             match={item.match}
             skills={item.skills}
-            description={`Role type: ${item.type} • Duration: ${item.duration}`}
+            description={item.description || `Role type: ${item.type || 'Internship'} · Duration: ${item.duration || 'Not provided'}`}
             actionLabel="Apply"
+            onSave={() => recommendationsApi.save(STUDENT_ID, item)}
           />
         ))}
-      </div>
+      </div> : <EmptyState title="No internships found" description="Try a different search to explore more roles." />}
     </>
   )
 }

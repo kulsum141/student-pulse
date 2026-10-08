@@ -22,10 +22,10 @@ def _load_engine():
     global _ENGINE, _ENGINE_STATUS
     try:
         if not _ARTEFACT_PATH.exists():
-            log.warning("No engine.pkl found at %s. Running training pipeline…", _ARTEFACT_PATH)
-            from ml.train import train
-            _ENGINE = train()
-            _ENGINE_STATUS = "trained_fresh"
+            log.error("No engine.pkl found at %s. Automatic training is disabled.", _ARTEFACT_PATH)
+            _ENGINE_STATUS = "artifact_missing"
+            _ENGINE = None
+            return
         else:
             with open(_ARTEFACT_PATH, "rb") as f:
                 _ENGINE = pickle.load(f)
@@ -90,6 +90,130 @@ def recommend_all(student_id: str, top_k_opps=5, top_k_papers=5, top_k_hackathon
     return engine.recommend_all(student_id, top_k_opps, top_k_papers, top_k_hackathons)
 
 
+def recommend_for_profile(profile: dict, top_k_opps=5, top_k_papers=5, top_k_hackathons=5):
+    """Use indexed recommendations or the engine's existing cold-start method."""
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    if student_id in getattr(engine, "_student_idx", {}):
+        return engine.recommend_all(student_id, top_k_opps, top_k_papers, top_k_hackathons)
+
+    top_k = max(top_k_opps, top_k_papers, top_k_hackathons)
+    result = engine.recommend_for_new_student(
+        profile.get("skills", []), profile.get("interests", []),
+        cgpa=float(profile.get("gpa") or profile.get("cgpa") or 7.0),
+        top_k=top_k,
+    )
+    result.student_id = student_id
+    result.student_name = profile.get("name") or student_id
+    result.opportunities = result.opportunities[:top_k_opps]
+    result.papers = result.papers[:top_k_papers]
+    result.hackathons = result.hackathons[:top_k_hackathons]
+    return result
+
+
+def recommend_category_for_profile(profile: dict, item_type: str, top_k=10, filters=None):
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    known_student = student_id in getattr(engine, "_student_idx", {})
+    if known_student:
+        if item_type == "opportunity":
+            return engine.recommend_opportunities(student_id, top_k=top_k, filters=filters)
+        if item_type == "hackathon":
+            return engine.recommend_hackathons(student_id, top_k=top_k, filters=filters)
+        return engine.recommend_papers(student_id, top_k=top_k, filters=filters)
+
+    result = engine.recommend_for_new_student(
+        profile.get("skills", []), profile.get("interests", []),
+        cgpa=float(profile.get("gpa") or profile.get("cgpa") or 7.0),
+        top_k=max(top_k, 25),
+    )
+    if item_type == "opportunity":
+        items, items_df, id_column = result.opportunities, engine._opps_df, "opportunity_id"
+    elif item_type == "hackathon":
+        items, items_df, id_column = result.hackathons, engine._hackathons_df, "hackathon_id"
+    else:
+        items, items_df, id_column = result.papers, engine._papers_df, "paper_id"
+    if filters:
+        filtered = engine._filter_df(items_df, filters)
+        allowed_ids = set(filtered[id_column].astype(str))
+        items = [item for item in items if item.item_id in allowed_ids]
+    return items[:top_k]
+
+
+def get_roadmap_for_profile(profile: dict, goal: Optional[str] = None):
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    goal = goal or profile.get("career_goal")
+    if student_id in getattr(engine, "_student_idx", {}):
+        roadmap = engine._career_roadmap
+        if roadmap is None:
+            from ml.skill_gap import CareerRoadmap
+            roadmap = CareerRoadmap(engine)
+        return roadmap.generate(student_id, goal=goal)
+    from ml.skill_gap import CareerRoadmap
+    return CareerRoadmap(engine).generate_from_goal(
+        skills=profile.get("skills", []),
+        goal=goal or "software engineer",
+        cgpa=float(profile.get("gpa") or profile.get("cgpa") or 7.0),
+        student_id=student_id,
+        student_name=profile.get("name") or student_id,
+    )
+
+
+def get_skill_gap_for_profile(profile: dict, goal: Optional[str] = None, target_id: Optional[str] = None, item_type: str = "opportunity"):
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    import pandas as pd
+    from ml.skill_gap import SkillGapAnalyzer
+    students = pd.DataFrame([{
+        "student_id": student_id,
+        "name": profile.get("name") or student_id,
+        "skills": profile.get("skills", []),
+        "career_goal": goal or profile.get("career_goal") or "software engineer",
+    }])
+    analyzer = SkillGapAnalyzer(engine)
+    if student_id in getattr(engine, "_student_idx", {}):
+        if target_id:
+            return analyzer.analyze(student_id, target_id, item_type)
+        return analyzer.analyze_for_career_goal(student_id, goal)
+    if target_id:
+        if item_type == "opportunity":
+            items = engine._opps_df
+        elif item_type == "hackathon":
+            items = engine._hackathons_df
+        else:
+            items = engine._papers_df
+        return analyzer.analyze(student_id, target_id, item_type, students_df=students, items_df=items)
+    return analyzer.analyze_for_career_goal(student_id, goal, students_df=students)
+
+
+def get_skill_gap_all_for_profile(profile: dict, top_k: int = 5, item_type: str = "opportunity"):
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    if student_id in getattr(engine, "_student_idx", {}):
+        return get_skill_gap_all(student_id, top_k=top_k, item_type=item_type)
+    import pandas as pd
+    from ml.skill_gap import SkillGapAnalyzer
+    students = pd.DataFrame([{
+        "student_id": student_id,
+        "name": profile.get("name") or student_id,
+        "skills": profile.get("skills", []),
+    }])
+    return SkillGapAnalyzer(engine).analyze_all_for_student(
+        student_id, top_k=top_k, item_type=item_type, students_df=students
+    )
+
+
 def recommend_for_new(skills, interests, cgpa=7.0, top_k=5):
     engine = get_engine()
     if engine is None:
@@ -142,6 +266,27 @@ def ask_assistant(student_id: str, query: str):
         from ml.skill_gap import SkillGapAnalyzer, CareerRoadmap
         assistant = StudentAssistant(engine, SkillGapAnalyzer(engine), CareerRoadmap(engine))
     return assistant.ask(student_id, query)
+
+
+def ask_assistant_for_profile(profile: dict, query: str):
+    engine = get_engine()
+    if engine is None:
+        return None
+    student_id = profile["student_id"]
+    assistant = engine._assistant
+    if assistant is None:
+        from ml.ai_assistant import StudentAssistant
+        from ml.skill_gap import SkillGapAnalyzer, CareerRoadmap
+        assistant = StudentAssistant(engine, SkillGapAnalyzer(engine), CareerRoadmap(engine))
+    if student_id in getattr(engine, "_student_idx", {}):
+        return assistant.ask(student_id, query)
+    return assistant.ask_for_new_student(
+        query=query,
+        skills=profile.get("skills", []),
+        interests=profile.get("interests", []),
+        cgpa=float(profile.get("gpa") or profile.get("cgpa") or 7.0),
+        goal=profile.get("career_goal") or "software engineer",
+    )
 
 
 def get_internships(student_id: Optional[str] = None, top_k: int = 10, filters: Optional[dict] = None):
@@ -197,27 +342,3 @@ def record_feedback(student_id: str, item_id: str, item_type: str, feedback_type
         return False
 
 
-def save_preferences(student_id: str, prefs: dict):
-    """Store preferences in a simple JSON sidecar file."""
-    import json
-    prefs_dir = Path(__file__).parent.parent.parent / "ml" / "data"
-    prefs_file = prefs_dir / "user_preferences.json"
-    all_prefs = {}
-    if prefs_file.exists():
-        with open(prefs_file) as f:
-            all_prefs = json.load(f)
-    all_prefs[student_id] = prefs
-    with open(prefs_file, "w") as f:
-        json.dump(all_prefs, f, indent=2)
-    return True
-
-
-def load_preferences(student_id: str) -> dict:
-    import json
-    prefs_dir = Path(__file__).parent.parent.parent / "ml" / "data"
-    prefs_file = prefs_dir / "user_preferences.json"
-    if not prefs_file.exists():
-        return {}
-    with open(prefs_file) as f:
-        all_prefs = json.load(f)
-    return all_prefs.get(student_id, {})

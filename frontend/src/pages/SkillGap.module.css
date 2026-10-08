@@ -1,12 +1,13 @@
 .topGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-  margin-bottom: 22px;
+  gap: 14px;
+  margin: 18px 0 25px;
 }
 
 .summaryCard {
-  min-height: 140px;
+  min-height: 124px;
+  border-radius: 15px;
 }
 
 .summaryHead {
@@ -20,40 +21,30 @@
 .summaryHead span,
 .summaryText {
   color: var(--text-secondary);
+  font-size: 11px;
 }
 
 .summaryHead strong {
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  letter-spacing: -0.04em;
+  max-width: 62%;
+  color: #7057a6;
+  font-size: 19px;
+  line-height: 1.2;
 }
 
-.columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-bottom: 22px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.column h3,
-.learningCard h3 {
-  color: var(--text-primary);
-  font-size: 1.1rem;
+.section {
+  margin: 24px 0;
 }
 
 .skillGrid {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 13px;
+  margin-top: 13px;
 }
 
 .learningCard {
-  padding: 20px;
+  margin: 25px 0;
+  border-radius: 15px;
 }
 
 .learningList {
@@ -64,10 +55,144 @@
 }
 
 .learningItem {
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.5);
-  border: 1px solid rgba(255,255,255,0.5);
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: rgba(255,255,255,0.66);
+  border: 1px solid rgba(255,255,255,0.75);
   color: var(--text-primary);
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.focusList {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.focusItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.rank {
+  color: #987cbd;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.focusCopy {
+  min-width: 0;
+  flex: 1;
+}
+
+.focusCopy strong,
+.focusCopy small {
+  display: block;
+}
+
+.focusCopy strong {
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.focusCopy small {
+  margin-top: 3px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.focusGap {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f9eaf0;
+  color: #9c5f79;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 10px;
+  margin-top: 13px;
+}
+
+.actionCard {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+
+.actionCard:hover {
+  transform: translateY(-1px);
+  border-color: #d9cbed;
+}
+
+.lavender { background: #f4effc; }
+.pink { background: #fff0f5; }
+.sky { background: #edf7fc; }
+.mint { background: #edfaf3; }
+.peach { background: #fff4eb; }
+
+.actionIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.76);
+  color: #8168ae;
+}
+
+.actionCopy {
+  min-width: 0;
+  flex: 1;
+}
+
+.actionCopy strong,
+.actionCopy small {
+  display: block;
+}
+
+.actionCopy strong {
+  color: var(--text-primary);
+  font-size: 10px;
+}
+
+.actionCopy small {
+  margin-top: 3px;
+  color: var(--text-secondary);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.actionArrow {
+  flex: 0 0 auto;
+  color: #8e7cab;
+}
+
+@media (max-width: 520px) {
+  .focusItem {
+    align-items: flex-start;
+  }
+
+  .focusGap {
+    margin-left: auto;
+  }
 }

@@ -1,5 +1,9 @@
 .card {
-  min-height: 106px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  min-height: 0;
+  border-radius: 14px;
 }
 
 .row {
@@ -27,4 +31,84 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-primary);
+}
+
+.levelRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.levelRow strong {
+  margin-left: 3px;
+  color: var(--text-primary);
+}
+
+.gap strong {
+  color: #a15f79;
+}
+
+.action {
+  padding-top: 10px;
+  border-top: 1px solid rgba(120, 103, 151, 0.13);
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.levelForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 7px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(120, 103, 151, 0.13);
+}
+
+.levelForm label {
+  display: grid;
+  gap: 4px;
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.levelForm input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 0 7px;
+  border: 1px solid #e2dbea;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-primary);
+  font-size: 10px;
+}
+
+.levelForm button {
+  min-height: 32px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #8066b8;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.levelForm button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+@media (max-width: 420px) {
+  .levelForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .levelForm button {
+    grid-column: 1 / -1;
+  }
 }

@@ -1,7 +1,8 @@
 """Hackathons API — /api/hackathons"""
 from typing import Optional
-from fastapi import APIRouter, Query
-from backend.services import ml_service
+from fastapi import APIRouter, Depends, HTTPException, Query
+from backend.dependencies import get_current_student
+from backend.services import database, ml_service
 
 router = APIRouter()
 
@@ -23,14 +24,21 @@ def list_hackathons(
     top_k: int = Query(10, ge=1, le=25),
     mode: Optional[str] = Query(None),
     difficulty_level: Optional[str] = Query(None),
+    student: dict = Depends(get_current_student),
 ):
+    if student_id and student_id != student["student_id"]:
+        raise HTTPException(status_code=403, detail="You cannot view recommendations for another student")
     filters = {}
     if mode:
         filters["mode"] = mode
     if difficulty_level:
         filters["difficulty_level"] = difficulty_level
 
-    items = ml_service.get_hackathons(student_id, top_k=top_k, filters=filters or None)
+    items = ml_service.recommend_category_for_profile(
+        student, "hackathon", top_k=top_k, filters=filters or None
+    )
+    if items is None:
+        raise HTTPException(status_code=503, detail="Recommendation engine is unavailable")
 
     if items and hasattr(items[0], "item_id"):
         engine = ml_service.get_engine()
@@ -44,4 +52,6 @@ def list_hackathons(
                                "score": rec.score, "skill_overlap": rec.skill_overlap,
                                "matched_skills": rec.matched_skills})
         return result
-    return [_normalise(i) for i in items]
+    recommendations = [_normalise(i) for i in items]
+    stored = database.list_opportunities("hackathon")
+    return recommendations + stored[:max(0, top_k - len(recommendations))]

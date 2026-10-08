@@ -14,7 +14,7 @@
   --peach-light: #fdf0e8;
 
   /* Surfaces */
-  --bg: #fdf9ff;
+  --bg: #faf8fc;
   --surface: #ffffff;
   --surface-2: #f7f4ff;
   --border: #e8e2f8;
@@ -31,10 +31,10 @@
   --accent-hover: #7c3aed;
 
   /* Sidebar */
-  --sidebar-width: 240px;
-  --sidebar-bg: linear-gradient(180deg, #f0ecff 0%, #fce8f5 100%);
+  --sidebar-width: 252px;
+  --sidebar-bg: linear-gradient(180deg, #f5f1ff 0%, #fbf1f7 58%, #fff8ef 100%);
 
-  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-primary);
@@ -43,7 +43,9 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 86% 4%, rgba(255, 225, 237, 0.34), transparent 30rem),
+    linear-gradient(180deg, #fbf9fd 0%, #f9f8fc 55%, #fdf9f5 100%);
   min-height: 100vh;
 }
 
@@ -55,6 +57,13 @@ button {
   background: none;
   font-family: inherit;
   font-size: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(139, 92, 246, 0.34);
+  outline-offset: 2px;
 }
 
 input, textarea, select {

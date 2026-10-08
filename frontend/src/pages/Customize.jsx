@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import PageHeader from '../components/PageHeader'
+import LoadingState from '../components/LoadingState'
+import ErrorState from '../components/ErrorState'
+import { preferencesApi, STUDENT_ID } from '../api'
 import styles from './Customize.module.css'
 
 const interests = ['AI / ML', 'Cloud', 'Cyber Security', 'Web Development', 'Data Science', 'App Development', 'Research', 'Startups']
@@ -25,22 +28,39 @@ export default function Customize() {
   const [selectedSkills, setSelectedSkills] = useState(defaultPreferences.selectedSkills)
   const [selectedPrefs, setSelectedPrefs] = useState(defaultPreferences.selectedPrefs)
   const [selectedDifficulty, setSelectedDifficulty] = useState(defaultPreferences.selectedDifficulty)
+  const [loadingPreferences, setLoadingPreferences] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [apiError, setApiError] = useState('')
+  const [saveMessage, setSaveMessage] = useState('')
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
 
-    if (!saved) return
-
-    try {
-      const parsed = JSON.parse(saved)
-      setSelectedInterests(parsed.selectedInterests || defaultPreferences.selectedInterests)
-      setSelectedGoals(parsed.selectedGoals || defaultPreferences.selectedGoals)
-      setSelectedSkills(parsed.selectedSkills || defaultPreferences.selectedSkills)
-      setSelectedPrefs(parsed.selectedPrefs || defaultPreferences.selectedPrefs)
-      setSelectedDifficulty(parsed.selectedDifficulty || defaultPreferences.selectedDifficulty)
-    } catch {
-      // Ignore malformed local storage data and keep defaults.
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        setSelectedInterests(parsed.selectedInterests || defaultPreferences.selectedInterests)
+        setSelectedGoals(parsed.selectedGoals || defaultPreferences.selectedGoals)
+        setSelectedSkills(parsed.selectedSkills || defaultPreferences.selectedSkills)
+        setSelectedPrefs(parsed.selectedPrefs || defaultPreferences.selectedPrefs)
+        setSelectedDifficulty(parsed.selectedDifficulty || defaultPreferences.selectedDifficulty)
+      } catch {
+        // Ignore malformed local storage data and keep defaults.
+      }
     }
+
+    preferencesApi.get(STUDENT_ID)
+      .then(({ data }) => {
+        if (data.interests?.length) setSelectedInterests(data.interests)
+        if (data.career_goal) setSelectedGoals([careerGoals.find(item => item.toLowerCase() === data.career_goal.toLowerCase()) || data.career_goal])
+        if (data.skill_level) setSelectedDifficulty([difficultyLevels.find(item => item.toLowerCase() === data.skill_level.toLowerCase()) || data.skill_level])
+        if (data.preferred_opportunity_type) {
+          const preference = opportunityTypes.find(item => item.toLowerCase() === data.preferred_opportunity_type.toLowerCase())
+          if (preference) setSelectedPrefs([preference])
+        }
+      })
+      .catch(error => setApiError(error.message || 'Unable to load saved preferences.'))
+      .finally(() => setLoadingPreferences(false))
   }, [])
 
   useEffect(() => {
@@ -60,9 +80,32 @@ export default function Customize() {
     setter(current.includes(value) ? current.filter(item => item !== value) : [...current, value])
   }
 
+  const savePreferences = async () => {
+    setSaving(true)
+    setApiError('')
+    setSaveMessage('')
+    try {
+      await preferencesApi.save(STUDENT_ID, {
+        career_goal: selectedGoals[0] || null,
+        interests: selectedInterests,
+        skill_level: selectedDifficulty[0]?.toLowerCase() || null,
+        preferred_opportunity_type: selectedPrefs[0]?.toLowerCase() || null,
+      })
+      setSaveMessage('Preferences saved to your profile.')
+    } catch (error) {
+      setApiError(error.message || 'Preferences were saved locally but could not reach the backend.')
+      setSaveMessage('Your choices are saved on this device.')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  if (loadingPreferences) return <LoadingState text="Loading your preferences..." />
+
   return (
     <>
       <PageHeader title="Customization" subtitle="Shape the platform around your learning preferences" />
+      {apiError && <ErrorState message={apiError} />}
 
       <div className={styles.grid}>
         <Card accent="lavender" className={styles.sectionCard}>
@@ -147,7 +190,10 @@ export default function Customize() {
       </div>
 
       <div className={styles.footerBar}>
-        <button type="button" className={styles.saveButton}>Saved locally</button>
+        <button type="button" className={styles.saveButton} onClick={savePreferences} disabled={saving}>
+          {saving ? 'Saving...' : 'Save preferences'}
+        </button>
+        {saveMessage && <span role="status">{saveMessage}</span>}
       </div>
     </>
   )

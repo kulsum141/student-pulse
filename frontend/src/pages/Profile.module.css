@@ -93,6 +93,87 @@
   color: var(--text-primary);
 }
 
+.editActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 10px;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.editButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid #ded4ee;
+  border-radius: 10px;
+  background: #f3effa;
+  color: #7058a1;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.editButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.editCard {
+  border-radius: 15px;
+}
+
+.editCard h3 {
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.editForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.editForm label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.editForm input:not([type="checkbox"]) {
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #e4ddec;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.remoteToggle {
+  display: flex !important;
+  align-items: center;
+  align-self: center;
+  gap: 8px !important;
+}
+
+.remoteToggle input {
+  accent-color: #8066b8;
+}
+
+.editForm > button {
+  justify-self: start;
+}
+
 @media (max-width: 640px) {
   .topGrid {
     grid-template-columns: 1fr;
@@ -101,5 +182,9 @@
   .profileCard {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .editForm {
+    grid-template-columns: 1fr;
   }
 }

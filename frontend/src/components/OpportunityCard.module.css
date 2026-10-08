@@ -54,6 +54,7 @@
 .metaRow span {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   padding: 5px 8px;
   background: rgba(255,255,255,0.4);
   border-radius: 999px;
@@ -90,9 +91,15 @@
 
 .primary,
 .secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   border-radius: 12px;
   padding: 10px 14px;
   font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
@@ -106,6 +113,23 @@
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-primary);
+}
+
+.saved {
+  color: #7258a7;
+  border-color: #d9cbed;
+  background: #f4effb;
+}
+
+.secondary:disabled {
+  cursor: default;
+  opacity: 0.88;
+}
+
+.saveError {
+  margin-top: 8px;
+  color: #a5455c;
+  font-size: 10px;
 }
 
 .primary:hover,

@@ -3,9 +3,10 @@ import Card from '../components/Card'
 import OpportunityCard from '../components/OpportunityCard'
 import PageHeader from '../components/PageHeader'
 import SectionHeader from '../components/SectionHeader'
+import EmptyState from '../components/EmptyState'
 import LoadingState from '../components/LoadingState'
 import ErrorState from '../components/ErrorState'
-import { mockApi } from '../services/mockApi'
+import { opportunitiesApi, recommendationsApi, STUDENT_ID } from '../api'
 import styles from './OpportunityPage.module.css'
 
 export default function Hackathons() {
@@ -15,7 +16,7 @@ export default function Hackathons() {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    mockApi.getHackathons()
+    opportunitiesApi.hackathons({ student_id: STUDENT_ID, top_k: 25 })
       .then(({ data }) => {
         setItems(data)
         setLoading(false)
@@ -51,7 +52,7 @@ export default function Hackathons() {
       </Card>
 
       <SectionHeader title="Upcoming events" subtitle={`${filtered.length} hackathon opportunities`} />
-      <div className={styles.grid}>
+      {filtered.length > 0 ? <div className={styles.grid}>
         {filtered.map(item => (
           <OpportunityCard
             key={item.id}
@@ -59,15 +60,16 @@ export default function Hackathons() {
             title={item.title}
             organization={item.organization}
             domain={item.domain}
-            location={item.mode}
+            location={item.location}
             deadline={item.deadline}
             match={item.match}
-            skills={[item.domain, item.difficulty]}
-            description={`Team size: ${item.teamSize} • Difficulty: ${item.difficulty}`}
+            skills={item.skills}
+            description={item.description || `${item.difficulty || 'Difficulty not provided'} · Team size ${item.teamSize || 'not provided'}`}
             actionLabel="Register"
+            onSave={() => recommendationsApi.save(STUDENT_ID, item)}
           />
         ))}
-      </div>
+      </div> : <EmptyState title="No hackathons found" description="Try a different search to see upcoming events." />}
     </>
   )
 }
